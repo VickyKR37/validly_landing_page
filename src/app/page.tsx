@@ -1,29 +1,80 @@
+
 import { SignupForm } from "@/components/signup-form";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 sm:p-8 animate-fadeIn bg-background">
-      <div className="w-full max-w-xl space-y-8 text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold font-headline text-primary tracking-tight">
-          Welcome to Validly
-        </h1>
-        
-        <div className="space-y-4 text-lg sm:text-xl font-body text-foreground/90">
-          <p>
-            Sign up for early access to Validly.
-          </p>
-          <p>
-            The core features of this site are enabling users to post their business ideas for real feedback from real people and allowing users to find beta testers for their MVPs.
-          </p>
-          <p className="font-bold text-primary/90">
-            Let&apos;s do this!
-          </p>
+    <div className="flex flex-col min-h-screen bg-background animate-fadeIn">
+      <header className="py-6 px-6 sm:px-8">
+        <div className="flex items-center space-x-2">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 100 100"
+            fill="hsl(var(--primary))"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8"
+          >
+            <rect width="100" height="100" rx="20" fill="hsl(var(--primary))" />
+            <text
+              x="50%"
+              y="50%"
+              dominantBaseline="middle"
+              textAnchor="middle"
+              fontSize="60"
+              fontWeight="bold"
+              fill="hsl(var(--primary-foreground))"
+            >
+              V
+            </text>
+          </svg>
+          <span className="font-headline text-2xl font-bold text-primary">
+            Validly
+          </span>
         </div>
-        
-        <div className="pt-4">
-          <SignupForm />
+      </header>
+
+      <main className="flex-grow flex flex-col items-center justify-center p-6 sm:p-8">
+        <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="space-y-6 text-center md:text-left">
+            <h1 className="text-4xl sm:text-5xl font-bold font-headline text-primary tracking-tight">
+              Welcome to Validly
+            </h1>
+            <div className="space-y-4 text-lg sm:text-xl font-body text-foreground/90">
+              <p>
+                Sign up for early access to Validly.
+              </p>
+              <p>
+                The core features of this site are enabling users to post their business ideas for real feedback from real people and allowing users to find beta testers for their MVPs.
+              </p>
+              <p className="font-bold text-primary/90">
+                Let&apos;s do this!
+              </p>
+            </div>
+            <div className="pt-4 mx-auto md:mx-0 max-w-md">
+              <SignupForm />
+            </div>
+          </div>
+          <div className="hidden md:flex justify-center items-center">
+            <Image
+              src="https://placehold.co/500x450.png"
+              alt="Placeholder image representing ideas and validation"
+              width={500}
+              height={450}
+              className="rounded-lg shadow-xl object-cover"
+              data-ai-hint="innovation collaboration"
+            />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+
+      <footer className="py-6 px-6 sm:px-8 mt-auto">
+        <div className="text-center text-sm text-foreground/70 space-x-4">
+          <span>© {new Date().getFullYear()} Validly. All rights reserved.</span>
+          <a href="#" className="hover:text-primary">Privacy Policy</a>
+          <a href="#" className="hover:text-primary">Terms of Service</a>
+        </div>
+      </footer>
+    </div>
   );
 }
