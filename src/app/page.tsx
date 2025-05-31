@@ -7,27 +7,6 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen bg-background animate-fadeIn">
       <header className="py-6 px-6 sm:px-8">
         <div className="flex items-center space-x-2">
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 100 100"
-            fill="hsl(var(--primary))"
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8"
-          >
-            <rect width="100" height="100" rx="20" fill="hsl(var(--primary))" />
-            <text
-              x="50%"
-              y="50%"
-              dominantBaseline="middle"
-              textAnchor="middle"
-              fontSize="60"
-              fontWeight="bold"
-              fill="hsl(var(--primary-foreground))"
-            >
-              V
-            </text>
-          </svg>
           <span className="font-headline text-2xl font-bold text-primary">
             Validly
           </span>
