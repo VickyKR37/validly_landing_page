@@ -3,8 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useFormState } from "react-dom";
-import { useEffect, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -45,7 +44,7 @@ export function SignupForm() {
     },
   });
 
-  const [state, formAction] = useFormState(submitEmailAction, initialState);
+  const [state, formAction] = useActionState(submitEmailAction, initialState);
   
   useEffect(() => {
     if (state?.message) {
@@ -53,10 +52,10 @@ export function SignupForm() {
         toast({
           title: "Success!",
           description: state.message,
-          variant: "default", // Or a custom success variant if defined
+          variant: "default", 
         });
-        form.reset(); // Reset form fields
-        setFormKey(Date.now()); // Change key to force re-render of Form component if needed
+        form.reset(); 
+        setFormKey(Date.now()); 
       } else {
         toast({
           title: "Error",
