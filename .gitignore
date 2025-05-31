@@ -1,45 +1,108 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Firebase
+.firebase
+firebase-debug.log
+firebase-debug.*.log
+*.firebase.*.log # Firebase emulators log files
+database-debug.log # Firebase RTDB emulator log file
+firestore-debug.log # Firebase Firestore emulator log file
+pubsub-debug.log # Firebase PubSub emulator log file
+storage-debug.log # Firebase Storage emulator log file
+
+# Dependencies
 /node_modules
 /.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+.pnp.js
+.yarn/install-state.gz
 
-# testing
-/coverage
-
-# next.js
+# Next.js
 /.next/
 /out/
+next-env.d.ts
 
-# production
-/build
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
 
-# misc
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.fleet
+
+# Dotenv environment variables file
+.env
+.env*.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# macOS
 .DS_Store
-*.pem
+.AppleDouble
+.LSOverride
 
-# debug
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional Prettier cache
+.prettiercache
+
+# Output files from bundlers
+/dist
+/build
+/public/build
+
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# vercel
-.vercel
+# Miscellaneous
+firebase-service-account-key.json # Example name for service account key
+serviceAccountKey.json # Common name for service account key
+*.pem
+*.key
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Coverage directory
+/coverage
+/.nyc_output
 
-.genkit/*
-.env*
+# dotenv
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
 
-# firebase
-firebase-debug.log
-firestore-debug.log
+# Docusaurus
+.docusaurus
+
+# Turborepo
+.turbo
