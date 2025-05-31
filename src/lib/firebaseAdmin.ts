@@ -1,20 +1,31 @@
 
 import admin from 'firebase-admin';
 
-// Ensure Firebase app is initialized only once
+let db: admin.firestore.Firestore;
+
 if (!admin.apps.length) {
   try {
-    // Initialize Firebase Admin SDK.
-    // In a Firebase environment (like Cloud Functions, App Engine, or Firebase Hosting with SSR),
-    // it can often initialize without explicit credentials.
-    // For local development, ensure GOOGLE_APPLICATION_CREDENTIALS is set in your environment,
-    // or provide a service account key explicitly:
-    // admin.initializeApp({ credential: admin.credential.cert(require('./path/to/your-service-account-key.json')) });
+    console.log('[firebaseAdmin] Attempting to initialize Firebase Admin SDK...');
+    // Log if GOOGLE_APPLICATION_CREDENTIALS is set, for debugging purposes.
+    if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+      console.log(`[firebaseAdmin] GOOGLE_APPLICATION_CREDENTIALS is set: ${process.env.GOOGLE_APPLICATION_CREDENTIALS}`);
+    } else if (process.env.NODE_ENV === 'development') {
+      // Warn only in development if it's not set, as it's expected to be auto-provided in Firebase environments.
+      console.warn('[firebaseAdmin] GOOGLE_APPLICATION_CREDENTIALS is not set. For local development, this is typically required for firebase-admin to initialize correctly.');
+    }
+
     admin.initializeApp();
-    console.log('Firebase Admin SDK initialized.');
+    console.log('[firebaseAdmin] Firebase Admin SDK initialized successfully.');
+    db = admin.firestore();
   } catch (e: any) {
-    console.error('Firebase Admin SDK initialization error:', e.stack);
+    console.error('[firebaseAdmin] Firebase Admin SDK initialization FAILED:', e.message);
+    // Re-throw the error to make the failure explicit and stop further execution if admin SDK isn't ready.
+    // This might provide a more specific error to Next.js/Turbopack.
+    throw new Error(`[firebaseAdmin] Failed to initialize Firebase Admin SDK. Original error: ${e.message}`);
   }
+} else {
+  console.log('[firebaseAdmin] Firebase Admin SDK already initialized.');
+  db = admin.firestore();
 }
 
-export const db = admin.firestore();
+export { db };
