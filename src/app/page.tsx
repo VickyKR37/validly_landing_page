@@ -10,10 +10,10 @@ export default function HomePage() {
         
         <div className="space-y-4 text-lg sm:text-xl font-body text-foreground/90">
           <p>
-            Need to validate a business idea? Need to find beta testers?
+            Sign up for early access to Validly.
           </p>
           <p>
-            Sign up for early access to Validly - post your business idea for real feedback from real people and find beta testers for your MVP.
+            The core features of this site are enabling users to post their business ideas for real feedback from real people and allowing users to find beta testers for their MVPs.
           </p>
           <p className="font-bold text-primary/90">
             Let&apos;s do this!
