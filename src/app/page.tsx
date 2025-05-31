@@ -14,7 +14,7 @@ export default function HomePage() {
       </header>
 
       <main className="flex-grow flex flex-col items-center justify-center p-6 sm:p-8">
-        <div className="w-full max-w-4xl grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div className="w-full max-w-4xl grid md:grid-cols-1 gap-8 md:gap-12 items-center">
           <div className="space-y-6 text-center md:text-left">
             <h1 className="text-4xl sm:text-5xl font-bold font-headline text-primary tracking-tight">
               Welcome to Validly
@@ -33,16 +33,6 @@ export default function HomePage() {
             <div className="pt-4 mx-auto md:mx-0 max-w-md">
               <SignupForm />
             </div>
-          </div>
-          <div className="hidden md:flex justify-center items-center">
-            <Image
-              src="https://placehold.co/500x450.png"
-              alt="Placeholder image representing ideas and validation"
-              width={500}
-              height={450}
-              className="rounded-lg shadow-xl object-cover"
-              data-ai-hint="innovation collaboration"
-            />
           </div>
         </div>
       </main>
