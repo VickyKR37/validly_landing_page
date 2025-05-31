@@ -72,7 +72,7 @@ export function SignupForm() {
       <CardHeader>
         <CardTitle className="font-headline text-2xl text-primary">Get Early Access</CardTitle>
         <CardDescription className="font-body">
-          Be the first to know when Validly launches.
+          
         </CardDescription>
       </CardHeader>
       <CardContent>
