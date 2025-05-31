@@ -12,6 +12,8 @@ if (!admin.apps.length) {
     } else if (process.env.NODE_ENV === 'development') {
       // Warn only in development if it's not set, as it's expected to be auto-provided in Firebase environments.
       console.warn('[firebaseAdmin] GOOGLE_APPLICATION_CREDENTIALS is not set. For local development, this is typically required for firebase-admin to initialize correctly.');
+    } else { // NODE_ENV is 'production' or other, and GOOGLE_APPLICATION_CREDENTIALS is not set
+        console.warn('[firebaseAdmin] GOOGLE_APPLICATION_CREDENTIALS is not set. In Firebase environments (like App Hosting or Cloud Functions), this is usually automatically managed by the environment. If this is a deployed environment outside of Firebase and this variable is not set, this is likely an issue.');
     }
 
     admin.initializeApp();
@@ -24,8 +26,9 @@ if (!admin.apps.length) {
     throw new Error(`[firebaseAdmin] Failed to initialize Firebase Admin SDK. Original error: ${e.message}`);
   }
 } else {
-  console.log('[firebaseAdmin] Firebase Admin SDK already initialized.');
-  db = admin.firestore();
+  console.log('[firebaseAdmin] Firebase Admin SDK already initialized. Getting default app instance.');
+  // Ensure db is assigned from the default app if already initialized
+  db = admin.app().firestore();
 }
 
 export { db };
