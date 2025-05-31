@@ -106,3 +106,5 @@ serviceAccountKey.json # Common name for service account key
 
 # Turborepo
 .turbo
+
+serviceAccountKey.json
