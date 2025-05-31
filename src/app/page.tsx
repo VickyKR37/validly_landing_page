@@ -24,7 +24,7 @@ export default function HomePage() {
                 Sign up for early access to Validly.
               </p>
               <p>
-                The core features of this site are enabling users to post their business ideas for real feedback from real people and enabling users to find beta testers for their MVPs. The vision is a community of founders helping each other out and solving genuine problems.
+                The core features of this site are enabling users to post their business ideas for real feedback from real people and enabling users to find beta testers <em>who will pay the founders to use</em> their MVPs. The vision is a community of founders helping each other out and solving genuine problems.
               </p>
               <p className="font-bold text-primary/90">
                 Let&apos;s do this!
