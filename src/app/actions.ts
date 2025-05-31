@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { db } from "@/lib/firebaseAdmin";
 
 const emailSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -29,17 +30,24 @@ export async function submitEmailAction(
 
   const validatedEmail = validationResult.data.email;
 
-  // Simulate sending email to vicky.rai1@hotmail.com
-  // In a real application, you would use an email service provider (e.g., SendGrid, AWS SES)
-  console.log(`Email received for early access: ${validatedEmail}`);
-  console.log(`This email would be forwarded to vicky.rai1@hotmail.com`);
+  try {
+    await db.collection("earlyAccessSignups").add({
+      email: validatedEmail,
+      signedUpAt: new Date(),
+    });
+    console.log(`Email ${validatedEmail} saved to Firestore.`);
 
-  // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
-  return {
-    success: true,
-    message: "Thank you for signing up! We'll be in touch.",
-    email: validatedEmail,
-  };
+    return {
+      success: true,
+      message: "Thank you for signing up! We'll be in touch.",
+      email: validatedEmail,
+    };
+  } catch (error) {
+    console.error("Error saving email to Firestore:", error);
+    // In a real app, you might want to log this error to a monitoring service
+    return {
+      success: false,
+      message: "An error occurred while signing you up. Please try again later.",
+    };
+  }
 }
