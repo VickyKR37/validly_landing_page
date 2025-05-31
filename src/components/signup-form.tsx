@@ -71,7 +71,7 @@ export function SignupForm() {
       <CardHeader>
         <CardTitle className="font-headline text-2xl text-primary">Get Early Access</CardTitle>
         <CardDescription className="font-body">
-          
+          Enter your email below to join our waitlist. We'll notify you upon launch!
         </CardDescription>
       </CardHeader>
       <CardContent>
